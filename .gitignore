@@ -1,0 +1,76 @@
+# Flutter/Dart/Pub related files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Build outputs
+build/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+ios/Runner.xcworkspace/
+android/app/debug/
+android/app/profile/
+android/app/release/
+*.apk
+*.aab
+
+# IntelliJ related files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code related files
+.vscode/
+
+# macOS related files
+macos/Flutter/ephemeral/
+*.flutter-plugins-dependencies
+*.flutter-plugins
+
+# Linux related files
+linux/flutter/ephemeral/
+
+# Web related files
+web/.dart_tool/
+web/compiled/
+
+# Windows related files
+windows/flutter/ephemeral/
+
+# Firebase related files
+firebase_app_id_file.json
+
+# Dart analysis
+*.lock
+.analysis_options.yaml
+
+# Keys and sensitive data
+*.key
+*.keystore
+
+# Miscellaneous
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+*.swp
+
+# Coverage folder
+coverage/
+
+# Package-specific
+# Uncomment this line if your project uses 'hive'
+# *.hive
+
+# Generated code
+*.g.dart
+*.mocks.dart
+.dart_tool/package_config_subset
+.dart_tool/package_config.json
