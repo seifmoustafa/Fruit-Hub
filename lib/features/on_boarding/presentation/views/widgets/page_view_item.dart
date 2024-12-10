@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruit_hub/core/utils/app_images.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
@@ -41,9 +40,11 @@ class PageViewItem extends StatelessWidget {
                 visible: isVisible,
                 child: const Padding(
                   padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "تخطي",
-                    style: TextStyle(color: Colors.black),
+                  child: SafeArea(
+                    child: Text(
+                      "تخطي",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 ),
               )
