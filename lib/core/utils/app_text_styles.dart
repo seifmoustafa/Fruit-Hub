@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class AppTextStyles {
+abstract class TextStyles {
   // Size 11
   static const TextStyle regular11 = TextStyle(
     fontSize: 11,
