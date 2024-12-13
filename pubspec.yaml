@@ -35,6 +35,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^2.0.16
+  shared_preferences: ^2.3.3
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.2
@@ -82,7 +83,7 @@ flutter:
         - asset: assets/fonts/Cairo-Bold.ttf
           weight: 700
         - asset: assets/fonts/Cairo-SemiBold.ttf
-          weight: 600   
+          weight: 600
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

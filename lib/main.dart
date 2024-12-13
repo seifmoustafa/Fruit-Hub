@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruit_hub/core/helper_functions/on_generate_routes.dart';
+import 'package:fruit_hub/core/services/shared_prefrences_singleton.dart';
 import 'package:fruit_hub/features/splash/presentation/views/splash_view.dart';
 
-void main() {
+void main() async {
+  await SharedPrefrencesSingleton.init();
   runApp(const FruitHub());
 }
 
