@@ -6,7 +6,9 @@ import 'package:fruit_hub/core/services/shared_prefrences_singleton.dart';
 import 'package:fruit_hub/features/splash/presentation/views/splash_view.dart';
 
 void main() async {
-  await SharedPrefrencesSingleton.init();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Prefs.init();
   runApp(const FruitHub());
 }
 
