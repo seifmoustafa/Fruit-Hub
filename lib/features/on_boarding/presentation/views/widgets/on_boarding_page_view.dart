@@ -13,9 +13,7 @@ class OnBoardingPageView extends StatelessWidget {
       controller: pageController,
       children: [
         PageViewItem(
-          isVisible:
-              (pageController.hasClients ? pageController.page!.round() : 0) ==
-                  0,
+          isVisible: true,
           backgroundImage: Assets.imagesPageViewItem1BackgroundImage,
           image: Assets.imagesPageViewItem1Image,
           subtitle:
@@ -23,7 +21,7 @@ class OnBoardingPageView extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("مرحبًا بك في", style: TextStyles.bold23),
+              const Text("مرحبًا بك في", style: TextStyles.bold23),
               Text(
                 "   HUB",
                 style:
@@ -37,27 +35,18 @@ class OnBoardingPageView extends StatelessWidget {
             ],
           ),
         ),
-        PageViewItem(
-          isVisible:
-              (pageController.hasClients ? pageController.page!.round() : 0) ==
-                  0,
+        const PageViewItem(
+          isVisible: false,
           backgroundImage: Assets.imagesPageViewItem2BackgroundImage,
           image: Assets.imagesPageViewItem2Image,
           subtitle:
               'نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية',
-          title: const Row(
+          title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'ابحث وتسوق',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF0C0D0D),
-                  fontSize: 23,
-                  fontFamily: 'Cairo',
-                  fontWeight: FontWeight.w700,
-                  height: 0,
-                ),
+                style: TextStyles.bold23,
               ),
             ],
           ),
