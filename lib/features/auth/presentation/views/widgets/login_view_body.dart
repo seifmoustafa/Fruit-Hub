@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
+import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/or_divider.dart';
+import 'package:fruit_hub/features/auth/presentation/views/widgets/social_login_button.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/dont_have_an_account_widget.dart';
 
 class LoginViewBody extends StatelessWidget {
@@ -40,7 +43,7 @@ class LoginViewBody extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             CustomButton(onPressed: () {}, text: 'تسجيل الدخول'),
@@ -48,10 +51,25 @@ class LoginViewBody extends StatelessWidget {
               height: 1,
             ),
             const DontHaveAnAccountWidget(),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            OrDivider(),
+            const OrDivider(),
+            SocialLoginButton(
+              onPressed: () {},
+              image: Assets.imagesGoogleIcon,
+              title: 'تسجيل بواسطة جوجل',
+            ),
+            SocialLoginButton(
+              onPressed: () {},
+              image: Assets.imagesApplIcon,
+              title: 'تسجيل بواسطة أبل',
+            ),
+            SocialLoginButton(
+              onPressed: () {},
+              image: Assets.imagesFacebookIcon,
+              title: 'تسجيل بواسطة فيسبوك',
+            ),
           ],
         ),
       ),
