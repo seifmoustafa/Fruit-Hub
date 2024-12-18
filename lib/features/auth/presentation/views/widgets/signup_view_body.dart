@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
+import 'package:fruit_hub/features/auth/presentation/views/widgets/terms_and_conditions.dart';
 
 class SignupViewBody extends StatelessWidget {
   const SignupViewBody({super.key});
@@ -24,7 +25,8 @@ class SignupViewBody extends StatelessWidget {
                   color: Color(0xffc9cecf),
                 ),
                 hintText: 'كلمة المرور',
-                textInputType: TextInputType.visiblePassword)
+                textInputType: TextInputType.visiblePassword),
+            TermsAndConditions(),
           ],
         ),
       ),
