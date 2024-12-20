@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/constants.dart';
+import 'package:fruit_hub/core/widgets/custom_button.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
+import 'package:fruit_hub/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/terms_and_conditions.dart';
 
 class SignupViewBody extends StatelessWidget {
@@ -8,25 +10,28 @@ class SignupViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
         child: Column(
           spacing: 16,
           children: [
-            CustomTextFormField(
+            const CustomTextFormField(
                 hintText: 'الاسم كامل', textInputType: TextInputType.name),
-            CustomTextFormField(
+            const CustomTextFormField(
                 hintText: 'البريد الإلكتروني',
                 textInputType: TextInputType.emailAddress),
-            CustomTextFormField(
+            const CustomTextFormField(
                 suffixIcon: Icon(
                   Icons.remove_red_eye,
                   color: Color(0xffc9cecf),
                 ),
                 hintText: 'كلمة المرور',
                 textInputType: TextInputType.visiblePassword),
-            TermsAndConditions(),
+            const TermsAndConditions(),
+            const SizedBox(),
+            CustomButton(onPressed: () {}, text: 'إنشاء حساب جديد'),
+            const HaveAnAccount()
           ],
         ),
       ),
