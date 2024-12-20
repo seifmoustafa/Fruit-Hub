@@ -3,19 +3,28 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 
-/// Builds a custom checkbox widget which animates between checked and
-/// unchecked states. The checkbox is wrapped in a GestureDetector to handle
-/// tap events, toggling the checked state. An AnimatedContainer is used to
-/// smoothly transition the checkbox's appearance. When checked, the checkbox
-/// displays a checkmark icon; otherwise, it shows an empty container.
+/// A custom checkbox widget that uses an SVG image for the check mark.
+///
+/// This widget is stateless and requires the [isChecked] and [onChecked]
+/// parameters to be provided.
 class CustomCheckBox extends StatelessWidget {
+  /// Creates a [CustomCheckBox].
+  ///
+  /// The [isChecked] and [onChecked] parameters must not be null.
   const CustomCheckBox({
     super.key,
     required this.isChecked,
     required this.onChecked,
   });
+
+  /// Whether the checkbox is checked.
   final bool isChecked;
+
+  /// Called when the checkbox is tapped.
+  ///
+  /// The new checked state is passed to the callback.
   final ValueChanged<bool> onChecked;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
