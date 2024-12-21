@@ -3,7 +3,7 @@ import 'package:fruit_hub/core/errors/exception.dart';
 
 class FirebaseAuthService {
   // Sign in with email and password
-  Future<User> signInWithEmailAndPassword(
+  Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
       final credential =
