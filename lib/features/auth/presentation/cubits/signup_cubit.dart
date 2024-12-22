@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruit_hub/features/auth/domain/entities/user_entity.dart';
 
