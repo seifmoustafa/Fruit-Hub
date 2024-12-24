@@ -3,37 +3,38 @@ import 'package:fruit_hub/core/errors/exception.dart';
 
 class CustomFirebaseException extends FirebaseAuthException {
   CustomFirebaseException({required super.code});
-  dynamic getFirbaseAuthException() {
+
+  CustomExeption getFirbaseAuthException() {
     if (code == 'weak-password') {
-      throw CustomExeption('كلمة المرور ضعيفة');
+      return CustomExeption('كلمة المرور ضعيفة');
     } else if (code == 'email-already-in-use') {
-      throw CustomExeption('الحساب موجود بالفعل');
+      return CustomExeption('الحساب موجود بالفعل');
     } else if (code == 'invalid-email') {
-      throw CustomExeption('يرجي كتابة البريد الإلكتروني بشكل صحيح');
+      return CustomExeption('يرجي كتابة البريد الإلكتروني بشكل صحيح');
     } else if (code == 'operation-not-allowed') {
-      throw CustomExeption('التسجيل غير مفعل');
+      return CustomExeption('التسجيل غير مفعل');
     } else if (code == 'network-request-failed') {
-      throw CustomExeption('لا يوجد اتصال بالإنترنت');
+      return CustomExeption('لا يوجد اتصال بالإنترنت');
     } else if (code == 'too-many-requests') {
-      throw CustomExeption('تم تجاوز الحد الأقصى لعدد المحاولات');
+      return CustomExeption('تم تجاوز الحد الأقصى لعدد المحاولات');
     } else if (code == 'user-disabled') {
-      throw CustomExeption('الحساب معطل');
+      return CustomExeption('الحساب معطل');
     } else if (code == 'user-not-found') {
-      throw CustomExeption('الحساب غير موجود');
+      return CustomExeption('الحساب غير موجود');
     } else if (code == 'wrong-password') {
-      throw CustomExeption('كلمة المرور غير صحيحة');
+      return CustomExeption('كلمة المرور غير صحيحة');
     } else if (code == 'internal-error') {
-      throw CustomExeption('حدث خطاء ما');
+      return CustomExeption('حدث خطاء ما');
     } else if (code == 'invalid-credential') {
-      throw CustomExeption('بيانات الحساب غير صحيحة');
+      return CustomExeption('بيانات الحساب غير صحيحة');
     } else if (code == 'email-already-in-use') {
-      throw CustomExeption('البريد الإلكتروني مستخدم بالفعل');
+      return CustomExeption('البريد الإلكتروني مستخدم بالفعل');
     } else if (code == 'invalid-verification-code') {
-      throw CustomExeption('كود التحقق غير صحيح');
+      return CustomExeption('كود التحقق غير صحيح');
     } else if (code == 'invalid-verification-id') {
-      throw CustomExeption('كود التحقق غير صحيح');
+      return CustomExeption('كود التحقق غير صحيح');
     } else {
-      throw CustomExeption('حدث خطأ ما');
+      return CustomExeption('حدث خطأ ما');
     }
   }
 }
