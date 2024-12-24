@@ -16,7 +16,8 @@ class SignupCubit extends Cubit<SignupState> {
         email: email, password: password, name: name);
     result.fold(
       (failure) => emit(SignupFailure(message: failure.message)),
-      (userEntity) => emit(SignupSuccess(userEntity: userEntity)),
+      (userEntity) => emit(SignupSuccess(
+          message: 'تم إنشاء الحساب بنجاح', userEntity: userEntity)),
     );
   }
 }

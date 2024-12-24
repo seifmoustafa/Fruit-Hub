@@ -9,8 +9,8 @@ class SignupLoading extends SignupState {}
 
 class SignupSuccess extends SignupState {
   final UserEntity userEntity;
-
-  SignupSuccess({required this.userEntity});
+  final String message;
+  SignupSuccess({required this.message, required this.userEntity});
 }
 
 class SignupFailure extends SignupState {
