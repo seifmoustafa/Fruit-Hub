@@ -8,7 +8,9 @@ class CustomTextFormField extends StatelessWidget {
     required this.textInputType,
     this.suffixIcon,
     this.onSaved,
+    this.obscureText = false,
   });
+  final bool obscureText;
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
@@ -16,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
       onSaved: onSaved,
       validator: (value) {
         if (value!.isEmpty) {
