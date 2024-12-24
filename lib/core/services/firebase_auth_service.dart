@@ -16,7 +16,7 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code: ${e.code}');
-      throw CustomFirebaseException(code: e.code).getFirbaseAuthException();
+      throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
       log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}');
 
@@ -34,7 +34,7 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log('Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code: ${e.code}');
-      throw CustomFirebaseException(code: e.code).getFirbaseAuthException();
+      throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
       log('Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}');
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');

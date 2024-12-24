@@ -1,17 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/core/errors/exception.dart';
 
-class CustomFirebaseException extends FirebaseAuthException {
+abstract class CustomFirebaseException extends FirebaseAuthException {
   CustomFirebaseException({required super.code});
 
-  CustomExeption getFirbaseAuthException() {
-    if (code == 'weak-password') {
-      return CustomExeption('كلمة المرور ضعيفة');
-    } else if (code == 'email-already-in-use') {
+  static CustomExeption getFirbaseAuthException(String code) {
+    if (code == 'email-already-in-use') {
       return CustomExeption('الحساب موجود بالفعل');
-    } else if (code == 'invalid-email') {
-      return CustomExeption('يرجي كتابة البريد الإلكتروني بشكل صحيح');
-    } else if (code == 'operation-not-allowed') {
+    }
+    //  else if (code == 'weak-password') {
+    //   return CustomExeption('كلمة المرور ضعيفة');
+    // }
+    // else if (code == 'invalid-email') {
+    //   return CustomExeption('يرجي كتابة البريد الإلكتروني بشكل صحيح');
+    // }
+    else if (code == 'operation-not-allowed') {
       return CustomExeption('التسجيل غير مفعل');
     } else if (code == 'network-request-failed') {
       return CustomExeption('لا يوجد اتصال بالإنترنت');
