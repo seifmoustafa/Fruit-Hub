@@ -65,7 +65,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 onPressed: () {
                   Prefs.setBool(kIsOnBoardingViewSeen, true);
                   Navigator.of(context)
-                      .pushReplacementNamed(LoginView.routeName);
+                      .pushReplacementNamed(SigninView.routeName);
                 },
                 text: 'ابدأ الان'),
           ),
