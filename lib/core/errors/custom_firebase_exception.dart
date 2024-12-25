@@ -40,6 +40,18 @@ abstract class CustomFirebaseException extends FirebaseAuthException {
       return CustomExeption('تم إغلاق النافذة المنبثقة قبل إكمال العملية');
     } else if (code == 'invalid-verification-id') {
       return CustomExeption('كود التحقق غير صحيح');
+    } else if (code == 'auth-domain-config-required') {
+      return CustomExeption('إعدادات مجال المصادقة مفقودة');
+    } else if (code == 'cancelled-popup-request') {
+      return CustomExeption('تم إلغاء النافذة المنبثقة');
+    } else if (code == 'operation-not-supported-in-this-environment') {
+      return CustomExeption('عملية المصادقة غير مدعومة في هذا البيئة');
+    } else if (code == 'provider-already-linked') {
+      return CustomExeption('تم ربط الحساب بالفعل بمزود مختلف');
+    } else if (code == 'requires-recent-login') {
+      return CustomExeption('يرجى تسجيل الدخول مرة أخرى لإكمال العملية');
+    } else if (code == 'web-storage-unsupported') {
+      return CustomExeption('تخزين الويب غير مدعوم في المتصفح الحالي');
     } else {
       return CustomExeption('حدث خطأ ما');
     }
