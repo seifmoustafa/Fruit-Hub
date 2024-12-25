@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hub/core/widgets/custom_text_form_field.dart';
 
-class PasswordField extends StatefulWidget {
-  const PasswordField({
+class CustomPasswordField extends StatefulWidget {
+  const CustomPasswordField({
     super.key,
     this.onSaved,
   });
   final void Function(String?)? onSaved;
 
   @override
-  State<PasswordField> createState() => _PasswordFieldState();
+  State<CustomPasswordField> createState() => _CustomPasswordFieldState();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
+class _CustomPasswordFieldState extends State<CustomPasswordField> {
   bool obscureText = true;
   @override
   Widget build(BuildContext context) {
