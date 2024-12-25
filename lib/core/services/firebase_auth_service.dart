@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fruit_hub/core/errors/exception.dart';
 import 'package:fruit_hub/core/errors/custom_firebase_exception.dart';
 
@@ -15,10 +16,14 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
-      log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code: ${e.code}');
+      log(
+        'Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()} and code: ${e.code}',
+      );
       throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
-      log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}');
+      log(
+        'Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}',
+      );
 
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
     }
@@ -33,10 +38,36 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
-      log('Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code: ${e.code}');
+      log(
+        'Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()} and code: ${e.code}',
+      );
       throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
       log('Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}');
+      throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
+    }
+  }
+
+  Future<User> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      return (await FirebaseAuth.instance.signInWithCredential(credential))
+          .user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+        'Error in FirebaseAuthService.signInWithGoogle: ${e.toString()} and code: ${e.code}',
+      );
+      throw CustomFirebaseException.getFirbaseAuthException(e.code);
+    } catch (e) {
+      log(
+        'Error in FirebaseAuthService.signInWithGoogle: ${e.toString()}',
+      );
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
     }
   }

@@ -27,10 +27,17 @@ abstract class CustomFirebaseException extends FirebaseAuthException {
       return CustomExeption('حدث خطاء ما');
     } else if (code == 'invalid-credential') {
       return CustomExeption('بيانات الحساب غير صحيحة');
-    } else if (code == 'email-already-in-use') {
-      return CustomExeption('البريد الإلكتروني مستخدم بالفعل');
     } else if (code == 'invalid-verification-code') {
       return CustomExeption('كود التحقق غير صحيح');
+    } else if (code == 'invalid-verification-id') {
+      return CustomExeption('كود التحقق غير صحيح');
+    } else if (code == 'account-exists-with-different-credential') {
+      return CustomExeption(
+          'الحساب مسجل بمزود مختلف، يرجى تسجيل الدخول باستخدام المزود المرتبط');
+    } else if (code == 'credential-already-in-use') {
+      return CustomExeption('بيانات الاعتماد مستخدمة بالفعل');
+    } else if (code == 'popup-closed-by-user') {
+      return CustomExeption('تم إغلاق النافذة المنبثقة قبل إكمال العملية');
     } else if (code == 'invalid-verification-id') {
       return CustomExeption('كود التحقق غير صحيح');
     } else {
