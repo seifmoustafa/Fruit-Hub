@@ -7,14 +7,11 @@ abstract class CustomFirebaseException extends FirebaseAuthException {
   static CustomExeption getFirbaseAuthException(String code) {
     if (code == 'email-already-in-use') {
       return CustomExeption('الحساب موجود بالفعل');
-    }
-    //  else if (code == 'weak-password') {
-    //   return CustomExeption('كلمة المرور ضعيفة');
-    // }
-    // else if (code == 'invalid-email') {
-    //   return CustomExeption('يرجي كتابة البريد الإلكتروني بشكل صحيح');
-    // }
-    else if (code == 'operation-not-allowed') {
+    } else if (code == 'weak-password') {
+      return CustomExeption('كلمة المرور ضعيفة');
+    } else if (code == 'invalid-email') {
+      return CustomExeption('يرجي كتابة البريد الإلكتروني بشكل صحيح');
+    } else if (code == 'operation-not-allowed') {
       return CustomExeption('التسجيل غير مفعل');
     } else if (code == 'network-request-failed') {
       return CustomExeption('لا يوجد اتصال بالإنترنت');

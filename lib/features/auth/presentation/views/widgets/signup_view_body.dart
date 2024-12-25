@@ -41,7 +41,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                   onSaved: (value) => email = value!,
                   hintText: 'البريد الإلكتروني',
                   textInputType: TextInputType.emailAddress),
-              PasswordField(
+              CustomPasswordField(
                 onSaved: (value) => password = value!,
               ),
               TermsAndConditions(
@@ -63,7 +63,8 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                                 userName,
                               )
                           : customErrorTopSnackBar(
-                              context, 'يجب عليك الموافقة على الشروط والأحكام');
+                              context: context,
+                              message: 'يجب عليك الموافقة على الشروط والأحكام');
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                       setState(() {});
