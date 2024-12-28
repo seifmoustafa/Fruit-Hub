@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/core/errors/exception.dart';
 
@@ -5,6 +6,7 @@ abstract class CustomFirebaseException extends FirebaseAuthException {
   CustomFirebaseException({required super.code});
 
   static CustomExeption getFirbaseAuthException(String code) {
+    log("exception code: $code");
     if (code == 'email-already-in-use') {
       return CustomExeption('الحساب موجود بالفعل');
     } else if (code == 'weak-password') {
