@@ -88,21 +88,32 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 title: 'تسجيل بواسطة جوجل',
               ),
               Platform.isIOS
-                  ? SocialLoginButton(
-                      onPressed: () {
-                        context.read<SigninCubit>().signInWithApple();
-                      },
-                      image: Assets.imagesApplIcon,
-                      title: 'تسجيل بواسطة أبل',
+                  ? Column(
+                      spacing: 16,
+                      children: [
+                        SocialLoginButton(
+                          onPressed: () {
+                            context.read<SigninCubit>().signInWithApple();
+                          },
+                          image: Assets.imagesApplIcon,
+                          title: 'تسجيل بواسطة أبل',
+                        ),
+                        SocialLoginButton(
+                          onPressed: () {
+                            context.read<SigninCubit>().signInWithFacebook();
+                          },
+                          image: Assets.imagesFacebookIcon,
+                          title: 'تسجيل بواسطة فيسبوك',
+                        ),
+                      ],
                     )
-                  : const SizedBox(),
-              SocialLoginButton(
-                onPressed: () {
-                  context.read<SigninCubit>().signInWithFacebook();
-                },
-                image: Assets.imagesFacebookIcon,
-                title: 'تسجيل بواسطة فيسبوك',
-              ),
+                  : SocialLoginButton(
+                      onPressed: () {
+                        context.read<SigninCubit>().signInWithFacebook();
+                      },
+                      image: Assets.imagesFacebookIcon,
+                      title: 'تسجيل بواسطة فيسبوك',
+                    ),
             ],
           ),
         ),
