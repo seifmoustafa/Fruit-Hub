@@ -1,10 +1,12 @@
 import 'dart:io';
-import 'dart:math';
 import 'dart:convert';
+import 'dart:developer';
+import 'dart:math' as math;
 import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fruit_hub/core/errors/exception.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruit_hub/core/errors/custom_firebase_exception.dart';
 
@@ -20,8 +22,10 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.code}');
       throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
+      log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}');
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
     }
   }
@@ -35,8 +39,10 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log('Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.code}');
       throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
+      log('Error in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}');
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
     }
   }
@@ -53,8 +59,10 @@ class FirebaseAuthService {
       return (await FirebaseAuth.instance.signInWithCredential(credential))
           .user!;
     } on FirebaseAuthException catch (e) {
+      log('Error in FirebaseAuthService.signInWithGoogle: ${e.code}');
       throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
+      log('Error in FirebaseAuthService.signInWithGoogle: ${e.toString()}');
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
     }
   }
@@ -98,16 +106,39 @@ class FirebaseAuthService {
               .signInWithCredential(facebookAuthCredential))
           .user!;
     } on FirebaseAuthException catch (e) {
+      log('Error in FirebaseAuthService.signInWithFacebook: ${e.code}');
       throw CustomFirebaseException.getFirbaseAuthException(e.code);
     } catch (e) {
+      log('Error in FirebaseAuthService.signInWithFacebook: ${e.toString()}');
       throw CustomExeption('حدث خطأ ما , يرجى المحاولة مرة أخرى');
     }
+  }
+
+  Future<User> signInWithApple() async {
+    final rawNonce = generateNonce();
+    final nonce = sha256ofString(rawNonce);
+
+    final appleCredential = await SignInWithApple.getAppleIDCredential(
+      scopes: [
+        AppleIDAuthorizationScopes.email,
+        AppleIDAuthorizationScopes.fullName,
+      ],
+      nonce: nonce,
+    );
+
+    final oauthCredential = OAuthProvider("apple.com").credential(
+      idToken: appleCredential.identityToken,
+      rawNonce: rawNonce,
+    );
+
+    return (await FirebaseAuth.instance.signInWithCredential(oauthCredential))
+        .user!;
   }
 
   String generateNonce([int length = 32]) {
     const charset =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
-    final random = Random.secure();
+    final random = math.Random.secure();
     return List.generate(length, (_) => charset[random.nextInt(charset.length)])
         .join();
   }
