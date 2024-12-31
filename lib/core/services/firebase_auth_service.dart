@@ -11,6 +11,8 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruit_hub/core/errors/custom_firebase_exception.dart';
 
 class FirebaseAuthService {
+  Future deleteUser() async =>
+      await FirebaseAuth.instance.currentUser!.delete();
   // Sign in with email and password
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {

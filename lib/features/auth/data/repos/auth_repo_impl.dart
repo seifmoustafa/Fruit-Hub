@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/core/errors/faliure.dart';
 import 'package:fruit_hub/core/errors/exception.dart';
 import 'package:fruit_hub/core/utils/backend_endpoints.dart';
@@ -19,17 +20,20 @@ class AuthRepoImpl extends AuthRepo {
       {required String email,
       required String password,
       required String name}) async {
+    User? user;
     try {
-      var user = await firebaseAuthService.createUserWithEmailAndPassword(
+      user = await firebaseAuthService.createUserWithEmailAndPassword(
         password: password,
         email: email,
       );
-      var userEntity = UserModel.fromFirebaseUser(user);
+      var userEntity = UserEntity(uId: user.uid, email: email, name: name);
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomExeption catch (e) {
+      await deleteUser(user);
       return left(ServerFaliure(message: e.message));
     } catch (e) {
+      deleteUser(user);
       log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.toString()}');
       return left(
           ServerFaliure(message: 'حدث خطأ ما يرجى المحاولة مرة أخرى لاحقا!'));
@@ -56,12 +60,18 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithGoogle();
-      return right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithGoogle();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomExeption catch (e) {
+      await deleteUser(user);
       return left(ServerFaliure(message: e.message));
     } catch (e) {
+      await deleteUser(user);
+
       log('Error in FirebaseAuthService.signInWithGoogle: ${e.toString()}');
       return left(
           ServerFaliure(message: 'حدث خطأ ما يرجى المحاولة مرة أخرى لاحقا!'));
@@ -70,12 +80,19 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithFacebook();
-      return right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithFacebook();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomExeption catch (e) {
+      await deleteUser(user);
+
       return left(ServerFaliure(message: e.message));
     } catch (e) {
+      await deleteUser(user);
+
       log('Error in FirebaseAuthService.signInWithFacebook: ${e.toString()}');
       return left(
           ServerFaliure(message: 'حدث خطأ ما يرجى المحاولة مرة أخرى لاحقا!'));
@@ -84,12 +101,19 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithApple() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithApple();
-      return right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithApple();
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomExeption catch (e) {
+      await deleteUser(user);
+
       return left(ServerFaliure(message: e.message));
     } catch (e) {
+      await deleteUser(user);
+
       log('Error in FirebaseAuthService.signInWithApple: ${e.toString()}');
       return left(
           ServerFaliure(message: 'حدث خطأ ما يرجى المحاولة مرة أخرى لاحقا!'));
@@ -100,5 +124,11 @@ class AuthRepoImpl extends AuthRepo {
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
         path: BackendEndpoints.addUserData, data: user.toMap());
+  }
+
+  Future<void> deleteUser(User? user) async {
+    if (user != null) {
+      await firebaseAuthService.deleteUser();
+    }
   }
 }
