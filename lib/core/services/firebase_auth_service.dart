@@ -77,8 +77,6 @@ class FirebaseAuthService {
 
       OAuthCredential facebookAuthCredential;
 
-      print("tokenType${loginResult.accessToken!.type}");
-
       if (Platform.isIOS) {
         switch (loginResult.accessToken!.type) {
           case AccessTokenType.classic:
