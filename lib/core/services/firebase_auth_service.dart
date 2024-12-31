@@ -20,6 +20,7 @@ class FirebaseAuthService {
         email: email,
         password: password,
       );
+      log(credential.user!.toString());
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log('Error in FirebaseAuthService.createUserWithEmailAndPassword: ${e.code}');
