@@ -27,40 +27,43 @@ class FeaturedItem extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            Container(
-              width: itemWidth * .5,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: svg.Svg(Assets.imagesFeaturedItemBackground),
-                    fit: BoxFit.fill),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 33.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 8,
-                  children: [
-                    const SizedBox(
-                      height: 0,
-                    ),
-                    Text('عروض العيد',
-                        style:
-                            TextStyles.regular13.copyWith(color: Colors.white)),
-                    const Spacer(),
-                    Text(
-                      'خصم 25%',
-                      style: TextStyles.bold19.copyWith(color: Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 11 - 8,
-                    ),
-                    FeaturedItemButton(
-                      onPressed: () {},
-                    ),
-                    const SizedBox(
-                      height: 29 - 8,
-                    )
-                  ],
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: Container(
+                width: itemWidth * .5,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: svg.Svg(Assets.imagesFeaturedItemBackground),
+                      fit: BoxFit.fill),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 33.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 8,
+                    children: [
+                      const SizedBox(
+                        height: 0,
+                      ),
+                      Text('عروض العيد',
+                          style: TextStyles.regular13
+                              .copyWith(color: Colors.white)),
+                      const Spacer(),
+                      Text(
+                        'خصم 25%',
+                        style: TextStyles.bold19.copyWith(color: Colors.white),
+                      ),
+                      const SizedBox(
+                        height: 11 - 8,
+                      ),
+                      FeaturedItemButton(
+                        onPressed: () {},
+                      ),
+                      const SizedBox(
+                        height: 29 - 8,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
