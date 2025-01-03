@@ -34,7 +34,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
           key: formKey,
           autovalidateMode: autovalidateMode,
           child: Column(
-            spacing: 16,
+            spacing: kSpacing,
             children: [
               CustomTextFormField(
                 onSaved: (value) => email = value!,
@@ -89,7 +89,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               ),
               Platform.isIOS
                   ? Column(
-                      spacing: 16,
+                      spacing: kSpacing,
                       children: [
                         SocialLoginButton(
                           onPressed: () {

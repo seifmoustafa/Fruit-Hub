@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/constants.dart';
 import 'package:fruit_hub/core/utils/app_text_styles.dart';
 
 class OrDivider extends StatelessWidget {
@@ -7,7 +8,7 @@ class OrDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Row(
-      spacing: 18,
+      spacing: kSpacing + 2,
       children: [
         Expanded(
           child: Divider(
