@@ -10,7 +10,7 @@ class FeaturedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var itemWidth = MediaQuery.sizeOf(context).width;
+    var itemWidth = MediaQuery.sizeOf(context).width - 32;
     return SizedBox(
       width: itemWidth,
       child: AspectRatio(
