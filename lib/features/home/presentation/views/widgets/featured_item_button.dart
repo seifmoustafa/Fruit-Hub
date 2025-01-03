@@ -8,16 +8,23 @@ class FeaturedItemButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
       child: TextButton(
           style: TextButton.styleFrom(
-              backgroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16))),
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
           onPressed: onPressed,
-          child: Text(
-            'تسوق الان',
-            style: TextStyles.bold19.copyWith(color: AppColors.primaryColor),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 28),
+            child: FittedBox(
+              child: Text(
+                'تسوق الان',
+                style:
+                    TextStyles.bold13.copyWith(color: AppColors.primaryColor),
+              ),
+            ),
           )),
     );
   }
