@@ -23,7 +23,7 @@ List<BottomNavicationBarEntity> get bottomNavigationBarList => [
           inActiveImage: Assets.imagesVuesaxOutlineShoppingCart,
           name: 'سلة التسوق'),
       BottomNavicationBarEntity(
-          activeImage: Assets.imagesVuesaxOutlineUser,
+          activeImage: Assets.imagesVuesaxBoldUser,
           inActiveImage: Assets.imagesVuesaxOutlineUser,
-          name: 'حسابي '),
+          name: 'حسابي'),
     ];
