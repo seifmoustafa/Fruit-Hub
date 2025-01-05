@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:fruit_hub/features/home/domain/entities/bottom_navication_bar_entity.dart';
 import 'package:fruit_hub/features/home/presentation/views/widgets/navigation_bar_item.dart';
 
-class CustomButtomNavigationBar extends StatelessWidget {
+class CustomButtomNavigationBar extends StatefulWidget {
   const CustomButtomNavigationBar({super.key});
 
+  @override
+  State<CustomButtomNavigationBar> createState() =>
+      _CustomButtomNavigationBarState();
+}
+
+class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,9 +35,13 @@ class CustomButtomNavigationBar extends StatelessWidget {
         ],
       ),
       child: Row(
-        children: bottomNavigationBarList.map((e) {
+        children: bottomNavigationBarList.asMap().entries.map((e) {
+          int index = e.key;
+          var entity = e.value;
           return NavigationBarItem(
-              bottomNavigationBarEntity: e, isSelected: false);
+            bottomNavigationBarEntity: entity,
+            isSelected: selectedIndex == index,
+          );
         }).toList(),
       ),
     );
