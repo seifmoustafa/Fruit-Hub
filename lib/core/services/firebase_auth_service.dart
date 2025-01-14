@@ -150,4 +150,6 @@ class FirebaseAuthService {
     final digest = sha256.convert(bytes);
     return digest.toString();
   }
+
+  bool isSignedIn() => FirebaseAuth.instance.currentUser != null;
 }
