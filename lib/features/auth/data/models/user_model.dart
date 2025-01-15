@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/features/auth/domain/entities/user_entity.dart';
-
 
 class UserModel extends UserEntity {
   UserModel({
@@ -22,5 +20,18 @@ class UserModel extends UserEntity {
       name: json['name'],
       uId: json['uId'],
     );
+  }
+  factory UserModel.fromEntity(
+    UserEntity userEntity,
+  ) {
+    return UserModel(
+        email: userEntity.email, name: userEntity.name, uId: userEntity.uId);
+  }
+  toMap() {
+    return {
+      'uId': uId,
+      'email': email,
+      'name': name,
+    };
   }
 }
