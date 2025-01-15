@@ -52,6 +52,8 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       var userEntity = await getUserData(uid: user.uid);
+      await saveUserData(user: userEntity);
+
       return right(userEntity);
     } on CustomExeption catch (e) {
       return left(ServerFaliure(message: e.message));
@@ -68,6 +70,8 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(user: userEntity);
+
       var isUserExist = await databaseService.checkIfDataExists(
           path: BackendEndpoints.isUserExists, documentId: userEntity.uId);
       if (isUserExist) {
@@ -94,6 +98,8 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(user: userEntity);
+
       var isUserExist = await databaseService.checkIfDataExists(
           path: BackendEndpoints.isUserExists, documentId: userEntity.uId);
       if (isUserExist) {
@@ -121,6 +127,8 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.signInWithApple();
       var userEntity = UserModel.fromFirebaseUser(user);
+      await saveUserData(user: userEntity);
+
       var isUserExist = await databaseService.checkIfDataExists(
           path: BackendEndpoints.isUserExists, documentId: userEntity.uId);
       if (isUserExist) {
